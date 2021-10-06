@@ -1,0 +1,3 @@
+Library assignment for The Odin Project Fullstack Javascript course.
+
+Objects were introduced at the end of the Fundamentals course and so I have spent the past week revising before diving into this new curriculum. The last lesson was on Prototypes and object constructors which are still very new to me. Expecting to spend quite a bit of time on this project as some of the tasks seem a bit out of reach at the moment.
