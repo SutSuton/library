@@ -1,4 +1,5 @@
 let myLibrary = [];
+closeForm(); // to ensure the form begins hidden when the page is loaded
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -37,7 +38,7 @@ function createCard(obj) {
   const pages = document.createElement("div");
   pages.className = "pages";
   card.appendChild(pages);
-  pages.textContent = obj.pages;
+  pages.textContent = obj.pages + " pages";
 
   const read = document.createElement("div");
   read.className = "read";
@@ -62,9 +63,29 @@ let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "read");
 userInput = catcher;
 addBookToLibrary();
 
+displayBooks(); // placeholder for now to work on CSS formatting of cards and container area
+
 function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
   }
 }
 
+function openForm() {
+  document.getElementById("input-form").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("input-form").style.display = "none";
+}
+
+const addBookButton = document.getElementById("add-book");
+addBookButton.addEventListener("click", openForm);
+
+const cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", closeForm);
+
+const submitButton = document.getElementById("submit");
+submitButton.addEventListener("click", function() {
+  console.log(title);
+})
