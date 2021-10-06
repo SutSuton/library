@@ -1,12 +1,15 @@
 .container {
-  background-color: blue;
+  background-color: rgb(131, 189, 255);
   height: 500px;
   width: 500px;
   display: flex;
 }
 
 .card {
-  background-color: red;
+  background-color: rgb(255, 201, 194);
+  display: flex;
+  flex-direction: column;
   height: 100px;
   width: 100px;
+  border: 2px solid black;
 }
