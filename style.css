@@ -63,6 +63,12 @@ h1 {
   color:rgb(75, 75, 75)
 }
 
+.delete-button {
+  height: 40px;
+  width: 40px;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
 #input-form {
   position: absolute;
   top: 10%;

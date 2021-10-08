@@ -6,15 +6,21 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  // this.info = function () {
-  //   return title + " by " + author + ", " + pages + ", " + read
-        // Seems unneccessary to the current task to include this function.
-  // }
 }
 
-let userInput; // placeholder for now until I figure out how the user will interact with the website
-function addBookToLibrary() {
-  myLibrary.push(userInput);
+// adding to the Book prototype to remove the current book.
+
+Book.prototype.toggleRead = function() {
+  this.read == "Read" ? this.read = "Unread" : this.read = "Read";   
+  clearBooks();
+  displayBooks();
+}
+
+// prototype sandbox above ^^^
+
+
+function addBookToLibrary(bookObject) {
+  myLibrary.push(bookObject);
 }
 
 const container = document.querySelector(".container");
@@ -23,6 +29,8 @@ function createCard(obj) {
   const card = document.createElement("div");
   card.className = "card";
   container.appendChild(card);
+
+  // card.dataset.number = myLibrary.length; This doesn't quite work as intended. Need to find a way to add a data- attribute as each element is being created
 
   // Create the elements which will make up each card. Not sure if there is an easier way to do this.
   const title = document.createElement("div");
@@ -44,25 +52,26 @@ function createCard(obj) {
   read.className = "read";
   card.appendChild(read);
   read.textContent = obj.read;
+
+  const deleteButton = document.createElement("button");
+  deleteButton.className = "delete-button"
+  card.appendChild(deleteButton);
+  deleteButton.textContent = 'X';
 }
 
 // populating the array with placeholder books
 let potter = new Book("Harry Potter", "JK Rowling", 500, "read");
-userInput = potter;
-addBookToLibrary();
+addBookToLibrary(potter);
 
 let rings = new Book("Lord of the Rings", "JRR Tolkien", 1000, "unread");
-userInput = rings;
-addBookToLibrary();
+addBookToLibrary(rings);
 
 let chimes = new Book("Chimes", "Anna Smaill", 200, "unread");
-userInput = chimes;
-addBookToLibrary();
+addBookToLibrary(chimes);
 
 let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "read");
-userInput = catcher;
-addBookToLibrary();
-addBookToLibrary();
+addBookToLibrary(catcher);
+addBookToLibrary(catcher);
 
 displayBooks(); // placeholder for now to work on CSS formatting of cards and container area
 
@@ -90,10 +99,6 @@ addBookButton.addEventListener("click", openForm);
 const cancelButton = document.getElementById("cancel");
 cancelButton.addEventListener("click", closeForm);
 
-const submitButton = document.getElementById("submit");
-submitButton.addEventListener("click", function() {
-})
-
 //Form functionality
 const addBookForm = document.forms['new-book'];
 addBookForm.addEventListener("submit", function(e) {
@@ -102,8 +107,8 @@ addBookForm.addEventListener("submit", function(e) {
   const formAuthor = document.querySelector(".author-input").value;
   const formPages = document.querySelector(".pages-input").value;
   const formRead = document.querySelector('input[name="read"]:checked').value;
-  userInput = new Book(formTitle, formAuthor, formPages, formRead);
-  addBookToLibrary();
+  let userInput = new Book(formTitle, formAuthor, formPages, formRead);
+  addBookToLibrary(userInput);
   clearBooks();
   displayBooks();
   closeForm();
