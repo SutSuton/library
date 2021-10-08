@@ -99,16 +99,16 @@ const addBookForm = document.forms['new-book'];
 const titleInput = document.querySelector(".title-input");
 const authorInput = document.querySelector(".author-input");
 const pagesInput = document.querySelector(".pages-input");
-function hello() {
-  console.log('hello');
-}
+const readInput = document.querySelectorAll(".radios");
+const radioRead = document.querySelector(".radio-read");
 
 addBookForm.addEventListener("submit", function(e) {
   e.preventDefault();
   const formTitle = titleInput.value;
   const formAuthor = authorInput.value;
   const formPages = pagesInput.value;
-  userInput = new Book(formTitle, formAuthor, formPages, "placeholder");
+  const formRead = document.querySelector('input[name="read"]:checked').value;
+  userInput = new Book(formTitle, formAuthor, formPages, formRead);
   addBookToLibrary();
   clearBooks();
   displayBooks();
