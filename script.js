@@ -62,6 +62,7 @@ addBookToLibrary();
 let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "read");
 userInput = catcher;
 addBookToLibrary();
+addBookToLibrary();
 
 displayBooks(); // placeholder for now to work on CSS formatting of cards and container area
 
@@ -69,6 +70,10 @@ function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
   }
+}
+
+function clearBooks() {
+  container.innerHTML = "";
 }
 
 function openForm() {
@@ -87,5 +92,25 @@ cancelButton.addEventListener("click", closeForm);
 
 const submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", function() {
-  console.log(title);
 })
+
+//Form functionality
+const addBookForm = document.forms['new-book'];
+const titleInput = document.querySelector(".title-input");
+const authorInput = document.querySelector(".author-input");
+const pagesInput = document.querySelector(".pages-input");
+function hello() {
+  console.log('hello');
+}
+
+addBookForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const formTitle = titleInput.value;
+  const formAuthor = authorInput.value;
+  const formPages = pagesInput.value;
+  userInput = new Book(formTitle, formAuthor, formPages, "placeholder");
+  addBookToLibrary();
+  clearBooks();
+  displayBooks();
+  closeForm();
+});

@@ -4,34 +4,63 @@ body {
   align-items: center;
 }
 
+h1 {
+  font-size: 80px;
+}
+
 .header {
   display: flex;
+  align-items: center;
   width: 80vw;
+  font-size: 30px;
 }
 
 #add-book {
-  width: 50px;
-  height: 50px;
-  font-size: 40px;
+  width: 72px;
+  height: 72px;
+  font-size: 56px;
+  font-weight: 900;
   padding: auto;
   margin-left: auto;
+  border-style: none;
+  border-radius: 12px;
+  background-color: rgb(0, 212, 0);
+  color: white;
 }
 
+#add-book:hover {
+  background-color:rgb(108, 240, 108)
+}
 .container {
   background-color: rgb(217, 235, 255);
   min-height: 500px;
   width: 80vw;
   display: flex;
-  
+  justify-content: space-around;
+  padding-top: 2vw;
+  flex-wrap: wrap;
 }
 
 .card {
-  background-color: rgb(255, 201, 194);
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  height: 100px;
-  width: 100px;
-  border: 2px solid black;
+  height: 16vw;
+  width: 16vw;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 3px solid rgb(75, 75, 75);
+  border-radius: 3%;
+  margin: 10px
+}
+
+.title {
+  font-size: 36px;
+}
+
+.author, .pages {
+  font-size: 26px;
+  color:rgb(75, 75, 75)
 }
 
 #input-form {
@@ -40,11 +69,78 @@ body {
   left: auto;
   right: auto;
 
-  background-color: rgb(46, 44, 65);
-  color: rgb(209, 207, 221);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 24vw;
+  height: auto;
+  background-color: rgb(209, 186, 231);
+  padding: 30px;
+  border: 2px solid rgb(129, 105, 153);
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px 20px rgb(129, 105, 153);
+}
+
+label {
+  display: block;
+}
+
+.form-title {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.text-input {
+  width: 90%;
+  height: 25px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 .input-title {
-  font-weight: 800px;
-  font-size: 30px;
+  font-weight: 800;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.read-unread {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.radios {
+  margin-right: auto;
+}
+
+.buttons {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#submit, #cancel {
+  width: 45%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: white;
+  border-style: none;
+}
+
+#submit {
+  background-color: rgb(0, 212, 0);
+}
+#submit:hover {
+  background-color:rgb(108, 240, 108)
+}
+#cancel {
+  background-color: rgb(235, 11, 11);
+}
+#cancel:hover {
+  background-color: rgb(255, 110, 110);
 }
