@@ -6,18 +6,14 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.index = myLibrary.length + 1;
 }
-
-// adding to the Book prototype to remove the current book.
 
 Book.prototype.toggleRead = function() {
   this.read == "Read" ? this.read = "Unread" : this.read = "Read";   
   clearBooks();
   displayBooks();
 }
-
-// prototype sandbox above ^^^
-
 
 function addBookToLibrary(bookObject) {
   myLibrary.push(bookObject);
@@ -30,7 +26,7 @@ function createCard(obj) {
   card.className = "card";
   container.appendChild(card);
 
-  // card.dataset.number = myLibrary.length; This doesn't quite work as intended. Need to find a way to add a data- attribute as each element is being created
+  card.dataset.index = obj.index; // This doesn't quite work as intended. Need to find a way to add a data- attribute as each element is being created
 
   // Create the elements which will make up each card. Not sure if there is an easier way to do this.
   const title = document.createElement("div");
@@ -48,28 +44,34 @@ function createCard(obj) {
   card.appendChild(pages);
   pages.textContent = obj.pages + " pages";
 
-  const read = document.createElement("div");
+  const read = document.createElement("button");
   read.className = "read";
   card.appendChild(read);
   read.textContent = obj.read;
+  read.addEventListener("click", function(e) {
+    obj.toggleRead();
+  });
 
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button"
   card.appendChild(deleteButton);
   deleteButton.textContent = 'X';
+  deleteButton.addEventListener("click", function(e) {
+    this.parentNode.remove();
+  });
 }
 
 // populating the array with placeholder books
-let potter = new Book("Harry Potter", "JK Rowling", 500, "read");
+let potter = new Book("Harry Potter", "JK Rowling", 500, "Read");
 addBookToLibrary(potter);
 
-let rings = new Book("Lord of the Rings", "JRR Tolkien", 1000, "unread");
+let rings = new Book("Lord of the Rings", "JRR Tolkien", 1000, "Unread");
 addBookToLibrary(rings);
 
-let chimes = new Book("Chimes", "Anna Smaill", 200, "unread");
+let chimes = new Book("Chimes", "Anna Smaill", 200, "Unread");
 addBookToLibrary(chimes);
 
-let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "read");
+let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "Read");
 addBookToLibrary(catcher);
 addBookToLibrary(catcher);
 
