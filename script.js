@@ -44,11 +44,15 @@ function createCard(obj) {
   card.appendChild(pages);
   pages.textContent = obj.pages + " pages";
 
-  const read = document.createElement("button");
+  const read = document.createElement("div");
   read.className = "read";
   card.appendChild(read);
   read.textContent = obj.read;
-  read.addEventListener("click", function(e) {
+
+  const readButton = document.createElement("button");
+  card.appendChild(readButton);
+  readButton.textContent = "Mark as read/unread";
+  readButton.addEventListener("click", function(e) {
     obj.toggleRead();
   });
 
