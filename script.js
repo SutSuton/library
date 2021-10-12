@@ -66,7 +66,9 @@ function createCard(obj) {
   buttonDiv.appendChild(deleteButton);
   deleteButton.textContent = 'delete';
   deleteButton.addEventListener("click", function(e) {
-    this.parentNode.parentNode.remove();
+    myLibrary.splice(myLibrary.indexOf(obj), 1);
+    clearBooks();
+    displayBooks();
   });
 }
 
