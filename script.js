@@ -1,5 +1,5 @@
 let myLibrary = [];
-closeForm(); // to ensure the form begins hidden when the page is loaded
+closeForm();
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,10 +15,6 @@ Book.prototype.toggleRead = function() {
   displayBooks();
 }
 
-function addBookToLibrary(bookObject) {
-  myLibrary.push(bookObject);
-}
-
 const container = document.querySelector(".container");
 
 function createCard(obj) {
@@ -26,8 +22,6 @@ function createCard(obj) {
   card.className = "card";
   container.appendChild(card);
   card.dataset.index = obj.index;
-
-  // Create the elements which will make up each card.
 
   const title = document.createElement("div");
   title.className = "title";
@@ -72,47 +66,33 @@ function createCard(obj) {
   });
 }
 
-// populating the array with placeholder books
-let potter = new Book("Harry Potter", "JK Rowling", 500, "Read");
-addBookToLibrary(potter);
-
-let rings = new Book("Lord of the Rings", "JRR Tolkien", 1000, "Unread");
-addBookToLibrary(rings);
-
-let chimes = new Book("Chimes", "Anna Smaill", 200, "Unread");
-addBookToLibrary(chimes);
-
-let catcher = new Book("The Catcher in the Rye", "JD Salinger", 300, "Read");
-addBookToLibrary(catcher);
-addBookToLibrary(catcher);
-
-displayBooks(); // placeholder for now to work on CSS formatting of cards and container area
-
 function displayBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
   }
 }
 
+function closeForm() {
+  document.getElementById("input-form").style.display = "none"
+}
+
 function clearBooks() {
   container.innerHTML = "";
 }
 
-function openForm() {
-  document.getElementById("input-form").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("input-form").style.display = "none";
-}
-
 const addBookButton = document.getElementById("add-book");
-addBookButton.addEventListener("click", openForm);
+addBookButton.addEventListener("click", function(e) {
+  document.getElementById("input-form").style.display = "block";
+});
 
 const cancelButton = document.getElementById("cancel");
 cancelButton.addEventListener("click", closeForm);
 
-//Form functionality
+
+function addBookToLibrary(bookObject) {
+  myLibrary.push(bookObject);
+}
+
 const addBookForm = document.forms['new-book'];
 addBookForm.addEventListener("submit", function(e) {
   e.preventDefault();
