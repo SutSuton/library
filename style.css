@@ -41,6 +41,7 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* Card styles */
 .card {
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -58,17 +59,35 @@ h1 {
   font-size: 36px;
 }
 
-.author, .pages {
+.author, .pages, .read {
   font-size: 26px;
   color:rgb(75, 75, 75)
 }
 
-.delete-button {
-  height: 40px;
-  width: 40px;
-  justify-self: flex-end;
-  align-self: flex-end;
+.pages, .read {
+  font-size: 18px;
 }
+
+.button-div {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.read-button {
+  font-weight: 700;
+}
+.delete-button {
+  font-weight: 700;
+  color: white;
+  background-color: rgb(255, 73, 73);
+  border: 1px solid red;
+  border-radius: 3px;
+}
+.delete-button:hover {
+  background-color: red;
+}
+
+/* Input form styles */
 #input-form {
   position: absolute;
   top: 10%;

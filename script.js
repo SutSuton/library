@@ -25,10 +25,10 @@ function createCard(obj) {
   const card = document.createElement("div");
   card.className = "card";
   container.appendChild(card);
+  card.dataset.index = obj.index;
 
-  card.dataset.index = obj.index; // This doesn't quite work as intended. Need to find a way to add a data- attribute as each element is being created
+  // Create the elements which will make up each card.
 
-  // Create the elements which will make up each card. Not sure if there is an easier way to do this.
   const title = document.createElement("div");
   title.className = "title";
   card.appendChild(title);
@@ -49,8 +49,13 @@ function createCard(obj) {
   card.appendChild(read);
   read.textContent = obj.read;
 
+  const buttonDiv = document.createElement("div");
+  buttonDiv.className = "button-div";
+  card.appendChild(buttonDiv);
+
   const readButton = document.createElement("button");
-  card.appendChild(readButton);
+  buttonDiv.appendChild(readButton);
+  readButton.className = "read-button"
   readButton.textContent = "Mark as read/unread";
   readButton.addEventListener("click", function(e) {
     obj.toggleRead();
@@ -58,10 +63,10 @@ function createCard(obj) {
 
   const deleteButton = document.createElement("button");
   deleteButton.className = "delete-button"
-  card.appendChild(deleteButton);
-  deleteButton.textContent = 'X';
+  buttonDiv.appendChild(deleteButton);
+  deleteButton.textContent = 'delete';
   deleteButton.addEventListener("click", function(e) {
-    this.parentNode.remove();
+    this.parentNode.parentNode.remove();
   });
 }
 
